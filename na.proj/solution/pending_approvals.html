@@ -1,0 +1,17 @@
+<h1>Pending Approvals</h1>
+<table>
+    <tr>
+        <th>Problem ID</th>
+        <th>Solution Text</th>
+        <th>Submitted At</th>
+        <th>Actions</th>
+    </tr>
+    {% for solution in solutions %}
+    <tr>
+        <td>{{ solution.problem_id }}</td>
+        <td>{{ solution.solution_text }}</td>
+        <td>{{ solution.submitted_at }}</td>
+        <td><a href="{% url 'approve_solution' solution.id %}">Approve</a></td>
+    </tr>
+    {% endfor %}
+</table>

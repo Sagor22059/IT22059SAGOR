@@ -1,0 +1,27 @@
+<h3>Notifications</h3>
+<ul>
+    {% for notification in notifications %}
+        <li>{{ notification.message }} - {{ notification.created_at }}</li>
+    {% endfor %}
+</ul>
+<h2>Your Submissions</h2>
+<table>
+    <tr>
+        <th>Problem ID</th>
+        <th>Solution</th>
+        <th>Status</th>
+        <th>Submitted At</th>
+    </tr>
+    {% for solution in solutions %}
+    <tr>
+        <td>{{ solution.problem_id }}</td>
+        <td>{{ solution.solution_text }}</td>
+        <td>{{ 'Approved' if solution.is_approved else 'Pending' }}</td>
+        <td>{{ solution.submitted_at }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No submissions yet.</td>
+    </tr>
+    {% endfor %}
+</table>
